@@ -71,7 +71,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        // generate a pin
+        // generate a pin - on realworld this may be queued or moved to event listener
+        // Also for the case of simplicty there is no use for the verification_pin on this app
         (new GenerateUnqiuePinForUserAction($user))->execute();
 
         return $user;

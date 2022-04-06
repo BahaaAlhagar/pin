@@ -37,7 +37,7 @@ class GenerateUnqiuePinForUserAction
             $previousNumber = $pin[$i - 1];
 
             if ($pin[$i] == $previousNumber || $pin[$i] == ($previousNumber + 1)) {
-                $pin[$i] = Arr::random(array_diff(range(0, 9), [$pin[$i - 1], ($pin[$i - 1] + 1)]));
+                $pin[$i] = Arr::random(array_diff(range(0, 9), [$previousNumber, $pin[$i]]));
             }
         }
 
